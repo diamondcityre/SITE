@@ -1,0 +1,8 @@
+# Allow example to allow all crawlers
+User-agent: *
+Allow: /
+
+User-agent: Googlebot Disallow: /offplan.php?
+
+
+Sitemap: https://www.diamondcityre.com/sitemap.xml

@@ -1,0 +1,165 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^sell/?$ sell_page.php [L]
+RewriteRule ^blog/index\.php$ /blog/ [R=301,L]
+
+#Rewrite requests for /blog/ to /blog/index.php
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^blog/$ /blog/index.php [L]
+
+
+RewriteRule ^community/index\.php$ /community/ [R=301,L]
+#Rewrite requests for /community/ to /community/index.php
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^community/$ /community/index.php [L]
+
+#Remove .php extension for files within the /community/ directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^community/(.+)\.php$ /community/$1 [R=301,L]
+
+#Rewrite requests to include .php extension internally for other URLs within /community/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^community/(.+?)/?$ community/$1.php [L]
+
+
+RewriteRule ^developer/index\.php$ /developer/ [R=301,L]
+#Rewrite requests for /developer/ to /developer/index.php
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^developer/$ /developer/index.php [L]
+
+# Remove .php extension for files within the /developer/ directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^developer/(.+)\.php$ /developer/$1 [R=301,L]
+
+# Rewrite requests to include .php extension internally for other URLs within /developer/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^developer/(.+?)/?$ developer/$1.php [L]
+
+
+RewriteRule ^routes/?$ routes.php [L]
+
+# Redirect requests to remove .php extension for files within the /blog/ directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^blog/(.+)\.php$ /blog/$1 [R=301,L]
+
+# Rewrite requests to include .php extension internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^blog/(.+?)/?$ blog/$1.php [L]
+RewriteRule ^routes/?$ routes.php [L]
+
+
+# Rewrite requests to include .php extension internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^community/(.+?)/?$ community/$1.php [L]
+RewriteRule ^routes/?$ routes.php [L]
+
+# Rewrite requests to include .php extension internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^developer/(.+?)/?$ developer/$1.php [L]
+RewriteRule ^developer/?$ routes.php [L]
+
+
+# Remove .php extension for about.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^about$ /about.php [L]
+
+# Redirect /about.php to /about
+RewriteCond %{THE_REQUEST} \s/about\.php\s [NC]
+RewriteRule ^ /about [R=301,L]
+
+# Remove .php extension for offplan.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^offplan$ /offplan.php [L]
+
+# Redirect /offplan.php to /off-plan-projects-in-dubai
+RewriteCond %{THE_REQUEST} \s/offplan\.php\s [NC]
+RewriteRule ^ /best-off-plan-projects-in-dubai [R=301,L]
+
+RewriteRule ^properties-for-sale-in-dubai$ /buy.php [L]
+RewriteRule ^properties-for-rent-in-dubai$ /lease.php [L]
+RewriteRule ^list-your-property$ /sell.php [L]
+
+# Remove .php extension for buy.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^buy$ /buy.php [L]
+
+# Redirect /buy.php to /properties-for-sale
+RewriteCond %{THE_REQUEST} \s/buy\.php\s [NC]
+RewriteRule ^ /buy [R=301,L]
+
+# Remove .php extension for lease.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^lease$ /lease.php [L]
+
+# Redirect /lease.php to /lease
+RewriteCond %{THE_REQUEST} \s/lease\.php\s [NC]
+RewriteRule ^ /lease [R=301,L]
+
+
+# Remove .php extension for career.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^career$ /career.php [L]
+
+# Remove .php extension for sell.php
+
+RewriteRule ^sell\.php$ /sell [R=301,L]
+
+
+# Remove .php extension for career.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^career$ /career.php [L]
+
+# Redirect /career.php to /career
+RewriteCond %{THE_REQUEST} \s/career\.php\s [NC]
+RewriteRule ^ /career [R=301,L]
+
+# Remove .php extension for contact.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^contact$ /contact.php [L]
+
+# Redirect /contact.php to /contact
+RewriteCond %{THE_REQUEST} \s/contact\.php\s [NC]
+RewriteRule ^ /contact [R=301,L]
+
+
+# Redirect requests for directories to index.php
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+)/?$ index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1[QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^sell_page/(\d+)/([^/]+)$ sell_page.php?prop_id=$1&name=$2 [L]
+
+
+# Redirect /project.php to /project/
+RewriteCond %{THE_REQUEST} \s/project\.php\s [NC]
+RewriteRule ^ /project [R=301,L]
+
+# Remove .php extension for lease.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^project$ /project.php [L]
+
+
+RewriteRule ^project/$ https://www.diamondcityre.com/best-off-plan-projects-in-dubai [R=301,L]
+
