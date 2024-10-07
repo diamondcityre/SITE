@@ -1,0 +1,18 @@
+[19-Nov-2023 22:30:41 UTC] PHP Warning:  include(include/connection.php): Failed to open stream: No such file or directory in /home/diamckng/public_html/include/header.php on line 3
+[19-Nov-2023 22:30:41 UTC] PHP Warning:  include(): Failed opening 'include/connection.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/diamckng/public_html/include/header.php on line 3
+[19-Nov-2023 22:30:41 UTC] PHP Warning:  include_once(include/helper/helper.php): Failed to open stream: No such file or directory in /home/diamckng/public_html/include/header.php on line 4
+[19-Nov-2023 22:30:41 UTC] PHP Warning:  include_once(): Failed opening 'include/helper/helper.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/diamckng/public_html/include/header.php on line 4
+[19-Nov-2023 22:30:42 UTC] PHP Warning:  Undefined variable $conn in /home/diamckng/public_html/include/off_plan_filter.php on line 57
+[19-Nov-2023 22:30:42 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/diamckng/public_html/include/off_plan_filter.php:57
+Stack trace:
+#0 /home/diamckng/public_html/include/off_plan_filter.php(57): mysqli_query()
+#1 {main}
+  thrown in /home/diamckng/public_html/include/off_plan_filter.php on line 57
+[19-Nov-2023 22:30:42 UTC] PHP Warning:  Undefined variable $action in /home/diamckng/public_html/include/property_body.php on line 6
+[19-Nov-2023 22:30:42 UTC] PHP Warning:  Undefined variable $action in /home/diamckng/public_html/include/property_body.php on line 13
+[19-Nov-2023 22:30:43 UTC] PHP Warning:  Undefined variable $conn in /home/diamckng/public_html/include/property_filter.php on line 57
+[19-Nov-2023 22:30:43 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/diamckng/public_html/include/property_filter.php:57
+Stack trace:
+#0 /home/diamckng/public_html/include/property_filter.php(57): mysqli_query()
+#1 {main}
+  thrown in /home/diamckng/public_html/include/property_filter.php on line 57
